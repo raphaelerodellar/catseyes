@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   get "owners/:id", to: "owners#show", as: :owner
   get "cats", to: "cats#index"
+  get "cats/:id", to: "cats#show", as: :cat
 
 end

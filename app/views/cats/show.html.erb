@@ -1,0 +1,17 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <h1><%= @cat.name %>'s details</h1>
+      <p>Age: <%= @cat.age %></p>
+      <p>Size: <%= @cat.size %></p>
+      <p>Description: <%= @cat.description %></p>
+      <p><%= @cat.heavy_hair_loss ? "🪮 Heavy hair loss" : "" %></p>
+      <p><%= @cat.sweet_cuddly_temper ? "❤️ Sweet cuddly temper" : "" %></p>
+      <p><%= @cat.strong_purring ? "💤 Strong purring" : "" %></p>
+      <p>Lives in: <%= @cat.address %></p>
+      <p>Proud pet of: <%= @cat.owner.first_name %></p>
+      <p>Book it now for <%= @cat.price_per_day %> $/day !</p>
+    </div>
+  </div>
+  <%= link_to "Back to all cats", owner_signed_in? ? owner_path(@owner) : cats_path %>
+</div>
