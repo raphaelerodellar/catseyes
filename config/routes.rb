@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "owners/:id", to: "owners#show", as: :owner
+  get "cats", to: "cats#index"
 
 end

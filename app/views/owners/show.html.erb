@@ -1,1 +1,6 @@
-<h1>Hello <%= @owner.first_name || @owner.email %>!</h1>
+<div class="container">
+  <h1 class="my-3">Hello <%= @owner.first_name || @owner.email %>!</h1>
+  <h2 class="my-3">All my cats</h2>
+  <% cats = Cat.where(owner_id: @owner.id) %>
+  <%= render "shared/catslist", cats: cats %>
+</div>
