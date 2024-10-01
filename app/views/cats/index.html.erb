@@ -1,22 +1,4 @@
 <div class="container my-3">
   <h1>All the cats</h1>
-    <div class="row">
-        <% @cats.each do |cat| %>
-        <div class="col-12 col-lg-6">
-          <div class="card-product my-2">
-            <img src="" />
-            <div class="card-product-infos">
-              <div>
-                <h2><%= cat.name %></h2>
-                <p><%= cat.description %></p>
-                <p><%= cat.age %>
-                   <%= cat.age > 1 ? "years-old" : "year-old" %>
-                </p>
-              </div>
-              <h3><%= cat.price_per_day %> $/day</h3>
-            </div>
-          </div>
-        </div>
-        <% end %>
-    </div>
+  <%= render "shared/catslist", cats: @cats %>
 </div>
