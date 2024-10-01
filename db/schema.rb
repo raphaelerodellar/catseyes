@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_01_111826) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_01_145108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cats", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "size"
+    t.boolean "heavy_hair_loss", default: false
+    t.boolean "sweet_cuddly_temper", default: false
+    t.boolean "strong_purring", default: false
+    t.text "description"
+    t.text "address"
+    t.integer "price_per_day"
+    t.bigint "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_cats_on_owner_id"
+  end
 
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +43,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_01_111826) do
     t.index ["email"], name: "index_owners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "cats", "owners"
 end
