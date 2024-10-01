@@ -17,7 +17,7 @@
       <ul class="navbar-nav me-auto">
         <% if owner_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "My Home", "#", class: "nav-link" %>
+            <%= link_to "My Home", owner_path(@owner), class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "My Bookings", "#", class: "nav-link" %>

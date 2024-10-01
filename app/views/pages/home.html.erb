@@ -1,6 +1,12 @@
-<h1>Pages#home</h1>
-<% if owner_signed_in? %>
-  <p>Welcome back <%= current_owner.first_name || current_owner.email %>!</p>
-<% else %>
-  <p>You are not logged in</p>
-<% end %>
+<div class="banner">
+  <div class="container">
+    <h1>Let Catseyes bring you the cuddles!</h1>
+    <p>This could be your couch...</p>
+    <a class="btn btn-flat" href="#">Book a cat</a>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <p>I would like to bring some happiness to others:</p>
+  <a class="btn btn-flat" href="owners/1">Share my cat</a>
+</div>
