@@ -13,5 +13,6 @@
       <p>Book it now for <%= @cat.price_per_day %> $/day !</p>
     </div>
   </div>
+  <%= link_to "Update this cat", owner_signed_in? ? cat_edit_path(@cat) : cats_path %>
   <%= link_to "Back to all cats", owner_signed_in? ? owner_path(current_owner) : cats_path %>
 </div>

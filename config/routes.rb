@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get "cats/:id", to: "cats#show", as: :cat
   get "owners/:owner_id/cats/new", to: "cats#new", as: :new_owner_cat
   post "owners/owner_:id/cats", to: "cats#create", as: :owner_cats
-
+  get "cats/:id/edit", to: "cats#edit", as: :cat_edit
+  patch "cats/:id", to: "cats#update"
 end
