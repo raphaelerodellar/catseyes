@@ -1,7 +1,12 @@
 <div class="container my-3">
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-8">
       <h1><%= @cat.name %>'s details</h1>
+      <div>
+        <% @cat.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill, class: "img-thumbnail" %>
+        <% end %>
+      </div>
       <p><strong>Age: </strong><%= @cat.age %></p>
       <p><strong>Size: </strong><%= @cat.size.capitalize %></p>
       <p><strong>Description: </strong><%= @cat.description %></p>
