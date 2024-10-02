@@ -1,6 +1,6 @@
 <div class="container my-3">
-  <div class="row">
-    <div class="col">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
       <h1><%= @cat.name %>'s details</h1>
       <p><strong>Age: </strong><%= @cat.age %></p>
       <p><strong>Size: </strong><%= @cat.size.capitalize %></p>
@@ -10,8 +10,15 @@
       <p><%= @cat.strong_purring ? "💤 Strong purring" : "" %></p>
       <p><strong>Lives in: </strong><%= @cat.address %></p>
       <p><strong>Proud pet of: </strong><%= @cat.owner.first_name %></p>
-      <p>Book it now for <%= @cat.price_per_day %> $/day !</p>
+      <p><strong>Price per day: </strong><%= @cat.price_per_day %> $</p>
+      <div class="my-3">
+        <% if owner_signed_in? %>
+          <%= link_to "Update", cat_edit_path(@cat) %>
+          <%= link_to "Delete", cat_delete_path(@cat),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+      <%= link_to "Back to all cats", owner_signed_in? ? owner_path(current_owner) : cats_path %>
     </div>
   </div>
-  <%= link_to "Back to all cats", owner_signed_in? ? owner_path(current_owner) : cats_path %>
 </div>

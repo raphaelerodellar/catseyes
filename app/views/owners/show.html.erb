@@ -3,4 +3,7 @@
   <h2 class="my-3">All my cats</h2>
   <% cats = Cat.where(owner_id: @owner.id) %>
   <%= render "shared/catslist", cats: cats %>
+  <div class="my-3">
+    <%= link_to "Add a new cat", new_owner_cat_path(@owner) %>
+  </div>
 </div>

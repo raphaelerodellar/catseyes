@@ -1,0 +1,12 @@
+<%= simple_form_for [owner, cat] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :size, :collection => %w[small medium large]  %>
+  <%= f.input :heavy_hair_loss %>
+  <%= f.input :sweet_cuddly_temper %>
+  <%= f.input :strong_purring %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.input :price_per_day %>
+  <%= f.submit %>
+<% end %>
