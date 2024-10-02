@@ -1,0 +1,9 @@
+<%= simple_form_for [cat, availability] do |f| %>
+  <%= f.input :start_on,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :end_on,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.submit %>
+<% end %>

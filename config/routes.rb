@@ -29,4 +29,7 @@ Rails.application.routes.draw do
 
   delete "availabilities/:id", to: "availabilities#destroy", as: :availability_delete
 
+  get "cats/:cat_id/availabilities/new", to: "availabilities#new", as: :new_cat_availability
+  post "cats/:cat_id", to: "availabilities#create", as: :cat_availabilities
+
 end

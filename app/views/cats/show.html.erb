@@ -34,7 +34,7 @@
     <div class="col-12 col-lg-6">
       <h1 class="py-2"><%= @cat.name %>'s availabilities</h1>
       <ul>
-        <% availabilities = Availability.where(cat_id: @cat.id) %>
+        <% availabilities = Availability.where(cat_id: @cat.id).order(start_on: :asc) %>
         <% availabilities.each do |availability| %>
           <li>
             From <%= availability.start_on %> to <%= availability.end_on %>
@@ -45,6 +45,15 @@
           </li>
         <% end %>
       </ul>
+      <% if owner_signed_in? %>
+        <%= link_to "Add an availability", new_cat_availability_path(@cat) %>
+        <div data-controller="toggle" class="mt-5">
+          <button data-action="click->toggle#fire" class="btn btn-outline-primary mb-3">Add a new availability</button>
+          <div data-toggle-target="togglableElement" class="d-none">
+            <%= render "availabilities/new", { cat: @cat, availability: @availability } %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
   </div>

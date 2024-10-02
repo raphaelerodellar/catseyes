@@ -6,6 +6,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    @availability = Availability.new
   end
 
   def new
@@ -15,7 +16,6 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.create(cat_params)
-    # @owner = Owner.find(params[:owner_id])
     @cat.owner = current_owner
     if @cat.save
       redirect_to owner_path(current_owner)
