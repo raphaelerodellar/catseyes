@@ -1,12 +1,17 @@
 <div class="container my-3">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-8">
-      <h1><%= @cat.name %>'s details</h1>
-      <div>
-        <% @cat.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, crop: :fill, class: "img-thumbnail" %>
-        <% end %>
+
+  <div class="row justify-content-center my-2">
+    <% @cat.photos.each do |photo| %>
+      <div class="col-2">
+        <%= cl_image_tag photo.key, crop: :fill, class: "img-thumbnail" %>
       </div>
+    <% end %>
+  </div>
+
+  <div class="row justify-content-center">
+
+    <div class="col-12 col-lg-6">
+      <h1 class="py-2"><%= @cat.name %>'s details</h1>
       <p><strong>Age: </strong><%= @cat.age %></p>
       <p><strong>Size: </strong><%= @cat.size.capitalize %></p>
       <p><strong>Description: </strong><%= @cat.description %></p>
@@ -18,12 +23,23 @@
       <p><strong>Price per day: </strong><%= @cat.price_per_day %> $</p>
       <div class="my-3">
         <% if owner_signed_in? %>
-          <%= link_to "Update", cat_edit_path(@cat) %>
-          <%= link_to "Delete", cat_delete_path(@cat),
+          <%= link_to "Update details", cat_edit_path(@cat) %>
+          <%= link_to "Delete cat", cat_delete_path(@cat),
               data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         <% end %>
       </div>
       <%= link_to "Back to all cats", owner_signed_in? ? owner_path(current_owner) : cats_path %>
     </div>
+
+    <div class="col-12 col-lg-6">
+      <h1 class="py-2"><%= @cat.name %>'s availabilities</h1>
+      <ul>
+        <% availabilities = Availability.where(cat_id: @cat.id) %>
+        <% availabilities.each do |availability| %>
+          <li>From <%= availability.start_on %> to <%= availability.end_on %></li>
+        <% end %>
+      </ul>
+    </div>
+
   </div>
 </div>
