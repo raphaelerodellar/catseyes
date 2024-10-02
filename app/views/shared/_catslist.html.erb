@@ -6,7 +6,7 @@
         <div class="card-product-infos">
           <div>
             <h2><%= link_to "#{cat.name}", cat_path(cat) %></h2>
-            <p><%= cat.description %></p>
+            <p class="text-wrap"><%= cat.description %></p>
             <p><%= cat.age %>
                 <%= cat.age > 1 ? "years-old" : "year-old" %>
             </p>
