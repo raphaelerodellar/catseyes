@@ -1,4 +1,31 @@
 <div class="container my-3">
-  <h1>All the cats</h1>
-  <%= render "shared/catslist", cats: @cats %>
+
+  <h2>When would you want to cuddle?</h2>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: cats_path, method: :get, class: "d-flex" do %>
+        <label class="align-self-center">From</label>
+        <%= date_field_tag :query_start_on,
+              params[:query_start_on],
+              class: "form-control mx-2"
+          %>
+          <label class="align-self-center">to</label>
+          <%= date_field_tag :query_end_on,
+              params[:query_end_on],
+              class: "form-control mx-2"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary mx-2" %>
+      <% end %>
+    </div>
+  </div>
+
+  <h2 class="mt-4">All the cats available</h2>
+    <% availabilities = Availability.where("start_on <= :query_start AND end_on >= :query_end",
+                          { query_start: params[:query_start_on], query_end: params[:query_end_on] }) %>
+    <% cats = [] %>
+    <% availabilities.each do |availability| %>
+      <% cats << availability.cat %>
+    <% end %>
+    <% cats.uniq %>
+  <%= render "shared/catslist", cats: cats %>
 </div>
