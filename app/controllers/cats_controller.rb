@@ -37,7 +37,7 @@ class CatsController < ApplicationController
   def destroy
     @cat = Cat.find(params[:id])
     @cat.destroy
-    redirect_to owner_path(current_owner), status: :see_other
+    redirect_to owner_path(current_owner)
   end
 
   private

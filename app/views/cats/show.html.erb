@@ -14,7 +14,8 @@
       <div class="my-3">
         <% if owner_signed_in? %>
           <%= link_to "Update", cat_edit_path(@cat) %>
-          <%= link_to "Delete", cat_delete_path(@cat) %>
+          <%= link_to "Delete", cat_delete_path(@cat),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         <% end %>
       </div>
       <%= link_to "Back to all cats", owner_signed_in? ? owner_path(current_owner) : cats_path %>
