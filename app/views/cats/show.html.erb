@@ -36,7 +36,13 @@
       <ul>
         <% availabilities = Availability.where(cat_id: @cat.id) %>
         <% availabilities.each do |availability| %>
-          <li>From <%= availability.start_on %> to <%= availability.end_on %></li>
+          <li>
+            From <%= availability.start_on %> to <%= availability.end_on %>
+            <% if owner_signed_in? %>
+              <%= link_to "Delete", availability_delete_path(availability),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
