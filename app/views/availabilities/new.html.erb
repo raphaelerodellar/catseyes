@@ -1,0 +1,6 @@
+<p>Add an availability for <%= @cat.name %></p>
+<%= simple_form_for [@cat, @availability] do |f| %>
+  <%= f.input :start_on %>
+  <%= f.input :end_on %>
+  <%= f.submit %>
+<% end %>
