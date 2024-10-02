@@ -2,7 +2,11 @@
   <% cats.each do |cat| %>
     <div class="col-12 col-lg-6">
       <div class="card-product my-2">
-        <img src="" />
+        <% if cat.photos.first %>
+          <%= cl_image_tag cat.photos.first.key, crop: :fill %>
+        <% else %>
+          <img src="" />
+        <% end %>
         <div class="card-product-infos">
           <div>
             <h2><%= link_to "#{cat.name}", cat_path(cat) %></h2>
