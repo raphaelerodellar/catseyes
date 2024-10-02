@@ -1,5 +1,6 @@
 class Cat < ApplicationRecord
   belongs_to :owner
+  has_many :availabilities
 
   validates :name, presence: true
   validates :address, presence: true
