@@ -15,10 +15,16 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "owners/:id", to: "owners#show", as: :owner
+
   get "cats", to: "cats#index"
   get "cats/:id", to: "cats#show", as: :cat
+
   get "owners/:owner_id/cats/new", to: "cats#new", as: :new_owner_cat
-  post "owners/owner_:id/cats", to: "cats#create", as: :owner_cats
+  post "owners/owner_:id", to: "cats#create", as: :owner_cats
+
   get "cats/:id/edit", to: "cats#edit", as: :cat_edit
+
   patch "cats/:id", to: "cats#update"
+  delete "cats/:id", to: "cats#destroy", as: :cat_delete
+
 end

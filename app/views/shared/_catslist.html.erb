@@ -7,9 +7,11 @@
           <div>
             <h2><%= link_to "#{cat.name}", cat_path(cat) %></h2>
             <p class="text-wrap"><%= cat.description %></p>
-            <p><%= cat.age %>
-                <%= cat.age > 1 ? "years-old" : "year-old" %>
-            </p>
+            <% if cat.age %>
+              <p><%= cat.age %>
+                  <%= cat.age > 1 ? "years-old" : "year-old" %>
+              </p>
+            <% end %>
           </div>
           <h3><%= cat.price_per_day %> $/day</h3>
         </div>
