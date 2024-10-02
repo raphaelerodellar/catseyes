@@ -1,5 +1,4 @@
-<p>Add an availability for <%= @cat.name %></p>
-<%= simple_form_for [@cat, @availability] do |f| %>
+<%= simple_form_for [cat, availability] do |f| %>
   <%= f.input :start_on,
             as: :string,
             input_html: { data: { controller: "datepicker" } } %>
