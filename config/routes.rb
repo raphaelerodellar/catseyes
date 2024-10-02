@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   patch "cats/:id", to: "cats#update"
   delete "cats/:id", to: "cats#destroy", as: :cat_delete
 
+  delete "availabilities/:id", to: "availabilities#destroy", as: :availability_delete
+
 end
