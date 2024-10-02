@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_02_143457) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_02_195552) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,21 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_02_143457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cat_id"], name: "index_availabilities_on_cat_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_on"
+    t.date "end_on"
+    t.string "booking_status"
+    t.integer "total_price"
+    t.text "user_comment"
+    t.text "owner_comment"
+    t.bigint "cat_id", null: false
+    t.bigint "use_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cat_id"], name: "index_bookings_on_cat_id"
+    t.index ["use_id"], name: "index_bookings_on_use_id"
   end
 
   create_table "cats", force: :cascade do |t|
@@ -92,5 +107,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_02_143457) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "availabilities", "cats"
+  add_foreign_key "bookings", "cats"
+  add_foreign_key "bookings", "uses"
   add_foreign_key "cats", "owners"
 end
