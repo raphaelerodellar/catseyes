@@ -1,4 +1,4 @@
-<%= simple_form_for cat do |f| %>
+<%= simple_form_for [owner, cat] do |f| %>
   <%= f.input :name %>
   <%= f.input :age %>
   <%= f.input :size, :collection => %w[small medium large]  %>

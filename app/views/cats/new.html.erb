@@ -2,7 +2,7 @@
   <div class="row justify-content-center m-3">
     <div class="col-12 col-lg-6 bg-white pb-3">
       <h1 class="mt-3">Add a new cat</h1>
-      <%= render "form", cat: @cat %>
+      <%= render "form", { owner: @owner, cat: @cat } %>
     </div>
   </div>
 </div>
