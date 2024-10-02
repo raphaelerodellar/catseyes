@@ -45,6 +45,9 @@
           </li>
         <% end %>
       </ul>
+      <% if owner_signed_in? %>
+        <%= link_to "Add an availability", new_cat_availability_path(@cat) %>
+      <% end %>
     </div>
 
   </div>
