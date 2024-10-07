@@ -29,4 +29,9 @@ puts "Creating availabilities..."
   puts "Created new availability"
 end
 
+puts "Creating bookings..."
+[
+  { start_on: "2024-12-05", end_on: "2024-12-07", cat: Cat.second, booking_status: "required" }
+]
+
 puts "Finished!"
